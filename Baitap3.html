@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Create New Item</h2>
+    <div>
+        <label for="input">Item</label>
+        <input oninput="handleChange()" style="background-color: orange;" type="text" id="input">
+        <input type="button" value="Add" onclick="handleAdd()">
+    </div>
+    <ul>
+        <li>nho mẽo</li>
+        <li>táo china</li>
+    </ul>
+    <script>
+        let ul = document.querySelector('ul');
+        let input = document.getElementById('input')
+        function handleAdd() {
+            let value = input.value;
+            console.log(value);
+            let newItem = document.createElement('li');
+            newItem.innerText = value;
+            ul.appendChild(newItem);
+            input.value = "";
+        }
+
+        function handleChange() {
+            let value = input.value;
+            if (value.trim() === "") {
+                input.style.backgroundColor = "orange"
+            } else {
+                input.style.backgroundColor = "white"
+            }
+        }
+    </script>
+</body>
+
+</html>

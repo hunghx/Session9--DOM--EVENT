@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- div#baitap1 -->
+    <div id="baitap1"></div>
+    <script>
+        let root = document.getElementById('baitap1');
+        // tao các phần tử
+        let label = document.createElement('label');
+        label.innerText = "Nhập nội dung tìm kiếm";
+        let input = document.createElement('input');
+        let link = document.createElement('a');
+        link.innerText = "Tìm kiếm nâng cao";
+        let select = document.createElement('select')
+        let option = document.createElement('option')
+        option.innerText = "Quần áo";
+        select.appendChild(option)
+        let button = document.createElement('button');
+        button.innerText = "Tìm kiếm"
+        //hiển thị ra màn hình
+        root.appendChild(label);
+        root.appendChild(input);
+        root.appendChild(link);
+        // root.appendChild(select);
+        root.appendChild(button);
+        // chỉnh css
+        //color: -webkit-link;
+        // cursor: pointer;
+        // text-decoration: underline;
+        link.style.color = "-webkit-link";
+        link.style.cursor = "pointer";
+        link.style.textDecoration = "underline";
+        link.href = "";
+        select.style.display = "block";
+        button.style.display = "block"
+        select.style.margin = "20px 0px"
+
+        // sự kiện
+        link.onclick = function (e) {
+            e.preventDefault();
+            if (link.innerText === "Tìm kiếm nâng cao") {
+                root.removeChild(button);
+                root.appendChild(select);
+                root.appendChild(button);
+                link.innerText = "Ẩn tìm kiếm nâng cao"
+            } else {
+                root.removeChild(select)
+                link.innerText = "Tìm kiếm nâng cao"
+            }
+        }
+    </script>
+</body>
+
+</html>
