@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>helo các bạn trẻ</h1>
+    </header>
+    <div onclick="onChangeH1()">
+        <script>
+            document.write("chào mừng bạn đến với bài DOM")
+        </script>
+    </div>
+
+    <main>
+        <section>
+            <ul>
+                <li id="gotoschool" title="thẻ dầu tiên"> đi học</li>
+                <li class="action"> đi chơi</li>
+                <li class="action"> đua xe</li>
+                <li class="action"> uống rượu</li>
+                <li class="action"> đi ngủ</li>
+            </ul>
+        </section>
+
+    </main>
+    <div id="box">
+
+    </div>
+
+    <!-- // form -->
+
+    <form action="">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="nhập tên">
+        </div>
+    </form>
+    <script>
+        // truy xuất theo id
+        let li = document.getElementById('gotoschool');
+        console.log(li);
+        // truy uất theo class
+        let list = document.getElementsByClassName('action');
+        console.log(list);
+        // truy xuất theo tag name
+        let ul = document.getElementsByTagName('ul');
+        console.log(ul);
+        // bộ chọn css
+        let selector = document.querySelector('body #gotoschool')
+        console.log(selector);
+        let selectors = document.querySelectorAll('main>section>ul>li')
+        console.log(selectors);
+        // Có thể thay đổi trực tiếp các thuộc tính cảu 1 phần tử html thông qua DOM
+        li.innerHTML = "<span>đi đánh bóng chày</span>"; // chèn 1 đoạn html vào tỏng node li
+        li.innerText = "đi đá bóng" // chèn 1 đoạn văn bản vào trong node li
+        li.title = "ko phải đầu tiên nữa";
+
+        //thay đổi css thông qua dom
+        li.style.backgroundColor = "red"
+        li.style.fontSize = "30px"
+        console.log(li.title);
+        li.setAttribute("action", "đang đi đá bóng")
+        // thêm mới 1 element trong dom
+
+        let div = document.createElement('div'); // <div></div>
+        div.innerText = "item" //  <div>item</div>
+        // hiển thị 1 element ra vị trí muốn
+        let nodeBox = document.querySelector('#box');
+        nodeBox.appendChild(div)
+        console.log("box =>>>>>>>>>", div);
+
+        //xoá thẻ li đầu tiên
+        ul[0].removeChild(li);
+
+        // thay thế 1 element 
+        let newLi = document.createElement('li')
+        newLi.innerText = "okokokok";
+        ul[0].replaceChild(newLi, list[0])
+
+        // tìm các đối tượng trong html
+        console.log(document.URL);
+        console.log(document.title);
+        console.log(document.head);
+        console.log(document.body);
+        console.log(document.links);
+        let h1 = document.getElementsByTagName('h1');
+        console.log(h1);
+        // cách 1
+        // nodeBox.addEventListener("click", function () {
+
+        //     h1[0].style.color = "red";
+        // })
+
+        //cách2
+        // nodeBox.onclick = function () {
+        //     h1[0].style.color = "red";
+        // }
+        //cách 3 - hay dùng
+        function onChangeH1() {
+            h1[0].style.color = "red";
+        }
+
+        document.addEventListener('keydown', function (event) {
+            console.log(event.code);
+            console.log(event.keyCode);
+        })
+
+
+
+    </script>
+</body>
+
+</html>
